@@ -1,4 +1,0 @@
-Target dependency graph (2 targets)
-Target 'App-product' in project 'SPMModules'
-➜ Explicit dependency on target 'Greeter' in project 'SPMModules'
-Target 'Greeter' in project 'SPMModules' (no dependencies)

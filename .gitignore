@@ -1,0 +1,8 @@
+.DS_Store
+.build/
+.swiftpm/
+*.xcodeproj/xcuserdata/
+xcuserdata/
+posts.json
+notes.txt
+*.json.bak

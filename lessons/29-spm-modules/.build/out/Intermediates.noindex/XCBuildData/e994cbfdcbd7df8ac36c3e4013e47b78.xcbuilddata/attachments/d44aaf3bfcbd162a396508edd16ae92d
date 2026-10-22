@@ -1,4 +1,0 @@
-module Greeter {
-header "Greeter-Swift.h"
-export *
-}
