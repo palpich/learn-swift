@@ -1,0 +1,4 @@
+module CourseLib {
+header "CourseLib-Swift.h"
+export *
+}

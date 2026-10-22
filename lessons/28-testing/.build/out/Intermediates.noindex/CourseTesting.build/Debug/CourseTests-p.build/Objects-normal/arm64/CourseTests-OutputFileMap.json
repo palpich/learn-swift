@@ -1,0 +1,29 @@
+{
+  "" : {
+    "diagnostics" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/CourseTests-primary.dia",
+    "emit-module-dependencies" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/CourseTests-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/CourseTests-primary-emit-module.dia",
+    "pch" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/CourseTests-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/CourseTests-primary.swiftdeps"
+  },
+  "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/DerivedSources/test_entry_point.swift" : {
+    "const-values" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point.swiftconstvalues",
+    "dependencies" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point.d",
+    "diagnostics" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point.dia",
+    "index-unit-output-path" : "/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point.o",
+    "llvm-bc" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point.bc",
+    "object" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point.o",
+    "swift-dependencies" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point.swiftdeps",
+    "swiftmodule" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/test_entry_point~partial.swiftmodule"
+  },
+  "/Users/v-landau/apps/learn-swift/lessons/28-testing/Tests/CourseTests/MathTests.swift" : {
+    "const-values" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests.swiftconstvalues",
+    "dependencies" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests.d",
+    "diagnostics" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests.dia",
+    "index-unit-output-path" : "/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests.o",
+    "llvm-bc" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests.bc",
+    "object" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests.o",
+    "swift-dependencies" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests.swiftdeps",
+    "swiftmodule" : "/Users/v-landau/apps/learn-swift/lessons/28-testing/.build/out/Intermediates.noindex/CourseTesting.build/Debug/CourseTests-p.build/Objects-normal/arm64/MathTests~partial.swiftmodule"
+  }
+}

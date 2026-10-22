@@ -1,53 +1,39 @@
-# Дальше: SwiftUI
+# Дальше: SwiftUI и Apple platforms
 
-Язык Swift ты уже потренировал в консоли. Следующий шаг — интерфейсы приложений для Apple через **SwiftUI**. Здесь нет своих Xcode-проектов курса: это карта, куда идти дальше.
+Базовый язык и повседневные инструменты уже в `lessons/` (включая **26 SwiftUI** и **27 SwiftData**). Здесь — куда углубляться дальше.
 
-## Что поставить
+## Уже есть в курсе
 
-- macOS и **Xcode** из App Store (бесплатно)
-- Создай проект: *File → New → Project → App*, интерфейс **SwiftUI**
+- [`lessons/26-swiftui-basics`](../lessons/26-swiftui-basics) — первый экран, `@State`, список  
+- [`lessons/27-swiftdata`](../lessons/27-swiftdata) — модели и сохранение  
+
+Делай их в **Xcode** (App + SwiftUI).
 
 ## Официальный путь Apple
 
-[Develop in Swift Tutorials](https://developer.apple.com/tutorials/develop-in-swift) — пошаговые туториалы: экраны, списки, состояние, навигация, SwiftData.
+[Develop in Swift Tutorials](https://developer.apple.com/tutorials/develop-in-swift) — экраны, навигация, accessibility, ML.
 
-Краткий порядок тем:
+Краткий порядок после урока 26:
 
-1. Знакомство с Xcode и превью SwiftUI  
-2. `View`, `Text`, `Image`, стеки (`HStack` / `VStack` / `ZStack`)  
-3. Кнопки и `@State`  
-4. Списки, `ForEach`, текстовые поля и `@Binding`  
-5. Свои типы данных и модели  
-6. Навигация (`NavigationStack`)  
-7. Сохранение (SwiftData / файлы)  
-8. Доступность и полировка UI  
+1. NavigationStack, sheets, tabs  
+2. `@Observable` / привязки между экранами  
+3. Сеть в UI (уроки 22 + 24)  
+4. SwiftData / файлы (урок 27)  
+5. Виджеты, App Intents — по желанию  
 
 Дополнительно: [SwiftUI pathway](https://developer.apple.com/swiftui/get-started/).
 
-## Практика на 100 дней
-
-Бесплатный курс Пола Хадсона:
+## 100 Days of SwiftUI
 
 [100 Days of SwiftUI](https://www.hackingwithswift.com/100/swiftui)
 
-Логика примерно такая:
+Дни 1–14 (язык) можно пропустить — они уже закрыты этим курсом. С ~Day 16 — проекты SwiftUI.
 
-| Days | Focus |
-|------|--------|
-| 1–14 | Повтор Swift (у тебя уже закрыто этим курсом) |
-| 15 | Закрепление языка |
-| 16–24 | Первые SwiftUI-проекты |
-| 26–46 | Больше UI, состояние, навигация |
-| 49–59 | Данные, сеть, Codable |
-| дальше | Карты, жесты, финальные приложения |
+## Мини-чеклист
 
-Дни 1–14 можно пробежаться быстро или пропустить и сразу идти в проекты SwiftUI — основы языка у тебя уже есть.
+- [ ] Уверенно: async/await, Codable, URLSession  
+- [ ] Сделал todo-лист из урока 26  
+- [ ] Сохранил заметки через SwiftData (урок 27)  
+- [ ] Прошёл `swift test` в уроке 28  
 
-## Мини-чеклист «я готов к SwiftUI»
-
-- [ ] Уверенно пишешь функции, опционалы, структуры  
-- [ ] Понимаешь разницу struct / class  
-- [ ] Умеешь обработать ошибку через `do/catch`  
-- [ ] Поставил Xcode и создал пустой SwiftUI App  
-
-Когда чеклист закрыт — открывай Develop in Swift или Day 16 в 100 Days of SwiftUI и собирай первое приложение.
+Дальше — своё приложение и [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/).
