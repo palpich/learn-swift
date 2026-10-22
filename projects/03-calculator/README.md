@@ -9,12 +9,16 @@
 ## Задание
 
 1. `enum CalcError: Error` — кейсы `unknownOperation`, `divideByZero`, `invalidInput`.
-2. `calculate(a:op:b:)` — `throws -> Double`:
+2. `enum Operation: String` — допиши кейсы `subtract`, `multiply`, `divide` с сырыми значениями `"-"`, `"*"`, `"/"` (как `Command` в [уроке 11](../../lessons/11-enumerations)).
+3. `calculate(a:op:b:)` — `throws -> Double`, `switch` по `Operation`:
    - `+ - * /` как обычно;
-   - `/` и `b == 0` → `divideByZero`;
-   - другая операция → `unknownOperation`.
-3. `parse(_ string:)` — разбери `"12.5 * 2"` (три части через пробел) в `(Double, String, Double)` или брось `invalidInput`.
-4. `safeEvaluate(_ string:)` — верни строку результата (`"25.0"`) или текст ошибки: `"divide by zero"`, `"unknown operation"`, `"invalid input"`.
+   - деление при `b == 0` → `divideByZero`.
+4. `parse(_ string:)` — разбери `"12.5 * 2"` (три части через пробел) в `(Double, Operation, Double)`:
+   - частей не три или числа не разбираются → `invalidInput`;
+   - знак операции неизвестен (`Operation(rawValue:)` вернул `nil`) → `unknownOperation`.
+5. `safeEvaluate(_ string:)` — верни строку результата (`"25.0"`) или текст ошибки: `"divide by zero"`, `"unknown operation"`, `"invalid input"`.
+
+Раз операция — enum, `switch` в `calculate` обходится без `default`: компилятор сам проверит, что ты обработал все четыре кейса.
 
 Интерактив: вводи выражения, `exit` — завершить.
 

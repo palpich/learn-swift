@@ -27,6 +27,17 @@ iso.formatOptions = [.withInternetDateTime]
 swift start.swift
 ```
 
+## Повторение
+
+Пригодятся `filter` / `sorted` / `map` из [урока 10](../10-closures), структуры из [урока 12](../12-structures) и `Comparable` из [урока 18](../18-equatable-hashable-comparable).
+
+4. `struct Event: Comparable` с `name` и `date` — допиши `<`, чтобы события сравнивались по дате. Даты (`Date`) сами умеют сравниваться через `<`.
+5. `upcoming(_:after:)` — имена событий, которые позже указанной даты, от ближайшего к дальнему.
+
+## Подсказка
+
+Раз `Event` — `Comparable`, массив событий сортируется просто `sorted()`.
+
 ## Дальше по докам
 
 [Date](https://developer.apple.com/documentation/foundation/date) · [ISO8601DateFormatter](https://developer.apple.com/documentation/foundation/iso8601dateformatter)

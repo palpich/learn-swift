@@ -6,6 +6,14 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Note.createdAt, order: .reverse) private var notes: [Note]
     @State private var draft = ""
+    @State private var search = ""
+
+    private var visibleNotes: [Note] {
+        if search.isEmpty {
+            return notes
+        }
+        return notes.filter { $0.text.lowercased().contains(search.lowercased()) }
+    }
 
     var body: some View {
         NavigationStack {
@@ -22,7 +30,7 @@ struct ContentView: View {
                 }
 
                 List {
-                    ForEach(notes) { note in
+                    ForEach(visibleNotes) { note in
                         VStack(alignment: .leading) {
                             Text(note.text)
                             Text(note.createdAt.formatted())
@@ -32,12 +40,13 @@ struct ContentView: View {
                     }
                     .onDelete { indexSet in
                         for index in indexSet {
-                            modelContext.delete(notes[index])
+                            modelContext.delete(visibleNotes[index])
                         }
                     }
                 }
             }
             .navigationTitle("Notes")
+            .searchable(text: $search)
             .padding()
         }
     }

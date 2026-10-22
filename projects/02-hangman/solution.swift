@@ -41,14 +41,30 @@ func afterGuess(
     }
 }
 
-func check(_ name: String, _ actual: Any, _ expected: Any) {
-    let a = "\(actual)"
-    let e = "\(expected)"
-    if a == e {
+// --- checks and game loop: no need to edit below this line ---
+import Foundation
+
+nonisolated(unsafe) var failures = 0
+
+func check(_ name: String, _ ok: Bool, _ detail: String = "") {
+    if ok {
         print("✓ \(name)")
     } else {
-        print("✗ \(name): получили \(a), ждали \(e)")
-        fatalError("проверка не прошла")
+        failures += 1
+        print("✗ \(name)\(detail.isEmpty ? "" : ": \(detail)")")
+    }
+}
+
+func check<T: Equatable>(_ name: String, _ actual: T, _ expected: T) {
+    check(name, actual == expected, "получили \(actual), ждали \(expected)")
+}
+
+func finish(_ title: String) {
+    if failures == 0 {
+        print("\(title) пройден!")
+    } else {
+        print("\(title): не прошло проверок — \(failures). Исправь код и запусти снова.")
+        exit(1)
     }
 }
 
@@ -70,7 +86,7 @@ func runChecks() {
     r = afterGuess(word: "hi", letter: "h", guessed: ["i"], misses: [], lives: 3)
     check("win", r.status, "win")
 
-    print("Project 02: checks passed!")
+    finish("Проект 02")
 }
 
 func runGame() {

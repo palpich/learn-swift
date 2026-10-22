@@ -8,24 +8,59 @@ struct Post: Codable {
     var body: String
 }
 
+enum APIError: Error {
+    case badStatus(Int)
+}
+
+func validate(statusCode: Int) throws {
+    guard (200...299).contains(statusCode) else {
+        throw APIError.badStatus(statusCode)
+    }
+}
+
 func decodePosts(from data: Data) throws -> [Post] {
     try JSONDecoder().decode([Post].self, from: data)
 }
 
 func fetchPosts(from url: URL) async throws -> [Post] {
     let (data, response) = try await URLSession.shared.data(from: url)
-    if let http = response as? HTTPURLResponse, !(200...299).contains(http.statusCode) {
-        throw URLError(.badServerResponse)
+    if let http = response as? HTTPURLResponse {
+        try validate(statusCode: http.statusCode)
     }
     return try decodePosts(from: data)
 }
+
+// --- checks: no need to edit below this line ---
+nonisolated(unsafe) var failures = 0
 
 func check(_ name: String, _ ok: Bool, _ detail: String = "") {
     if ok {
         print("✓ \(name)")
     } else {
+        failures += 1
         print("✗ \(name)\(detail.isEmpty ? "" : ": \(detail)")")
-        fatalError("проверка не прошла")
+    }
+}
+
+func check<T: Equatable>(_ name: String, _ actual: T, _ expected: T) {
+    check(name, actual == expected, "получили \(actual), ждали \(expected)")
+}
+
+func finish(_ title: String) {
+    if failures == 0 {
+        print("\(title) пройден!")
+    } else {
+        print("\(title): не прошло проверок — \(failures). Исправь код и запусти снова.")
+        exit(1)
+    }
+}
+
+func errorText(_ work: () throws -> Void) -> String {
+    do {
+        try work()
+        return "no error"
+    } catch {
+        return "\(error)"
     }
 }
 
@@ -37,10 +72,13 @@ func run() async {
           {"userId":1,"id":2,"title":"Swift","body":"Rocks"}
         ]
         """.data(using: .utf8)!
-        let posts = try! decodePosts(from: sample)
-        check("count", posts.count == 2)
-        check("title", posts[0].title == "Hello")
-        print("Урок 24 пройден!")
+        let posts = (try? decodePosts(from: sample)) ?? []
+        check("count", posts.count, 2)
+        check("title", posts.first?.title, "Hello")
+        check("status 200", errorText { try validate(statusCode: 200) }, "no error")
+        check("status 404", errorText { try validate(statusCode: 404) }, "badStatus(404)")
+        check("status 500", errorText { try validate(statusCode: 500) }, "badStatus(500)")
+        finish("Урок 24")
         return
     }
 

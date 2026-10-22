@@ -19,26 +19,33 @@ class Pet {
 
 `weak` всегда опционален и становится `nil`, когда объект уничтожен. `unowned` — не опционал, но опасен, если объект уже мёртв.
 
+Замыкание тоже держит сильные ссылки на всё, что использует. Если объект хранит замыкание, а замыкание обращается к `self`, получится такой же цикл. Его разрывают списком захвата `[weak self]`:
+
+```swift
+button.onTap = { [weak self] in
+    self?.close()   // self теперь опционален
+}
+```
+
 ## Задание
 
-1. Классы `Person` и `Apartment`.
-2. `Person` имеет `var apartment: Apartment?`.
-3. `Apartment` имеет `weak var tenant: Person?`.
-4. `func makeCycleBroken() -> (personAlive: Bool, apartmentTenantNil: Bool)`:
-   - создай person и apartment, свяжи их;
-   - в `do { }` положи person в локальную переменную, свяжи, выйди из scope (person должен освободиться);
-   - верни: был ли person ещё жив через weak-проверку... Упростим:
-   
-Проще API:
+Классы `Person` и `Apartment` уже есть в файле: у `Person` свойство `var apartment: Apartment?`, у `Apartment` — `var tenant: Person?`.
 
-`func tenantClearedAfterPersonReleased() -> Bool`:
-- создай `Apartment`;
-- внутри вложенного scope создай `Person`, назначь `person.apartment = apt`, `apt.tenant = person`;
-- после выхода из scope `apt.tenant` должен быть `nil` (person уничтожен, weak обнулился). Верни `apt.tenant == nil`.
+1. Сделай `tenant` слабой ссылкой (`weak var`), чтобы квартира не держала жильца.
+2. `func tenantClearedAfterPersonReleased() -> Bool`:
+   - создай `Apartment`;
+   - внутри вложенного `do { }` создай `Person`, назначь `person.apartment = apt` и `apt.tenant = person`;
+   - после выхода из `do` жилец уничтожен, и `weak`-ссылка обнулилась. Верни `apt.tenant == nil`.
 
 ```bash
 swift start.swift
 ```
+
+## Повторение
+
+Пригодятся замыкания из [урока 10](../10-closures) и классы из [урока 13](../13-classes).
+
+3. В `Screen.start()` замыкание захватывает `self` сильно: экран держит `ticker`, а `ticker` через замыкание держит экран. Поэтому экран никогда не освобождается — проверка `screen released` это ловит. Исправь замыкание так, чтобы счётчик `ticks` по-прежнему рос, а экран освобождался.
 
 ## Дальше по книге
 

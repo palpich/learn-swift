@@ -10,6 +10,7 @@
 29-spm-modules/
   Package.swift
   Sources/Greeter/Greeter.swift   # library
+  Sources/Toolkit/Stack.swift     # library
   Sources/App/main.swift          # executable
 ```
 
@@ -33,7 +34,23 @@ swift run App
 # Hello, Swift!
 ```
 
-Сверяйся с `solution/` при необходимости.
+## Повторение
+
+Пригодятся `Stack` из [урока 16](../16-generics) и access control из [урока 19](../19-result-defer-access-control).
+
+В модуле `Toolkit` уже лежит `Stack` из урока 16, но им нельзя воспользоваться из `App`: всё внутри модуля по умолчанию `internal` — видно только самому модулю.
+
+4. Сделай `Stack` публичным: `public struct`, а также `public` у `count`, `peek`, `push` и `pop`. Добавь `public init() {}` — инициализатор, который Swift создаёт сам, остаётся `internal`.
+5. В `Package.swift` добавь `"Toolkit"` в `dependencies` у target `App`.
+6. В `main.swift` раскомментируй `import Toolkit` и код со стеком.
+
+```bash
+swift run App
+# Hello, Swift!
+# Last: second, left: 1
+```
+
+Сверяйся с `solution/` при необходимости (там лежат и `Stack.swift`, и `Package.swift`).
 
 ## Зачем это нужно
 
@@ -42,3 +59,7 @@ swift run App
 ## Дальше
 
 [Swift Package Manager](https://documentation.swift.org/spm/documentation/packagemanagerdocs/)
+
+## Дальше по курсу
+
+Сделай финальный проект [`projects/06-final-app`](../../projects/06-final-app) — в нём сходится всё, что было в курсе.

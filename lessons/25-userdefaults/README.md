@@ -25,6 +25,19 @@ let name = defaults.string(forKey: "username")
 swift start.swift
 ```
 
+## Повторение
+
+Пригодятся значение по умолчанию через `??` из [урока 08](../08-optionals) и `Codable` из [урока 21](../21-codable).
+
+`UserDefaults` хранит только простые типы, но `Data` среди них есть. Значит, любую `Codable`-структуру можно сохранить, превратив её в JSON.
+
+5. `saveSettings(_:to:)` — закодируй `Settings` через `JSONEncoder` и сохрани `Data` по ключу `"settings"`.
+6. `loadSettings(from:)` — прочитай и раскодируй. Если данных нет или они битые — верни `defaultSettings`.
+
+## Подсказка
+
+`defaults.data(forKey: "settings")` возвращает `Data?`. Раскодировать удобно через `try? JSONDecoder().decode(...)`, а запасной вариант подставить через `?? defaultSettings`.
+
 ## Дальше по докам
 
 [UserDefaults](https://developer.apple.com/documentation/foundation/userdefaults)

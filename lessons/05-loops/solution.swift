@@ -1,8 +1,10 @@
 // Lesson 05: solution
 
 func fizzBuzz(upTo n: Int) -> [String] {
-    guard n >= 1 else { return [] }
     var result: [String] = []
+    if n < 1 {
+        return result
+    }
     for i in 1...n {
         if i % 15 == 0 {
             result.append("FizzBuzz")
@@ -17,14 +19,40 @@ func fizzBuzz(upTo n: Int) -> [String] {
     return result
 }
 
-func check(_ name: String, _ actual: Any, _ expected: Any) {
-    let a = "\(actual)"
-    let e = "\(expected)"
-    if a == e {
+func countVowels(_ text: String) -> Int {
+    var count = 0
+    for letter in text.lowercased() {
+        if "aeiou".contains(letter) {
+            count += 1
+        }
+    }
+    return count
+}
+
+// --- checks: no need to edit below this line ---
+import Foundation
+
+nonisolated(unsafe) var failures = 0
+
+func check(_ name: String, _ ok: Bool, _ detail: String = "") {
+    if ok {
         print("✓ \(name)")
     } else {
-        print("✗ \(name): получили \(a), ждали \(e)")
-        fatalError("проверка не прошла")
+        failures += 1
+        print("✗ \(name)\(detail.isEmpty ? "" : ": \(detail)")")
+    }
+}
+
+func check<T: Equatable>(_ name: String, _ actual: T, _ expected: T) {
+    check(name, actual == expected, "получили \(actual), ждали \(expected)")
+}
+
+func finish(_ title: String) {
+    if failures == 0 {
+        print("\(title) пройден!")
+    } else {
+        print("\(title): не прошло проверок — \(failures). Исправь код и запусти снова.")
+        exit(1)
     }
 }
 
@@ -39,4 +67,8 @@ check(
         "11", "Fizz", "13", "14", "FizzBuzz"
     ]
 )
-print("Урок 05 пройден!")
+check("vowels Swift", countVowels("Swift"), 1)
+check("vowels mixed case", countVowels("AEIOU and you"), 8)
+check("vowels none", countVowels("rhythm"), 0)
+check("vowels empty", countVowels(""), 0)
+finish("Урок 05")

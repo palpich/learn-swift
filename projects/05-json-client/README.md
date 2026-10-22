@@ -12,7 +12,8 @@ CLI-клиент: скачать посты, сохранить в файл, п�
 2. `func fetchPosts(limit: Int) async throws -> [Post]` — jsonplaceholder `posts?_limit=`.
 3. `func savePosts(_ posts: [Post], to url: URL) throws` — JSON file.
 4. `func loadPosts(from url: URL) throws -> [Post]`.
-5. Режим `check` — только save/load roundtrip на локальных данных (без сети).
+5. `func postsPerUser(_ posts: [Post]) -> [Int: Int]` — сколько постов у каждого автора (`userId` → количество). Это счётчик на словаре из [урока 07](../../lessons/07-dictionaries-and-sets).
+6. Режим `check` — save/load roundtrip и подсчёт на локальных данных (без сети).
 
 ```bash
 swift start.swift check

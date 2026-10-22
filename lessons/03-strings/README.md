@@ -9,7 +9,9 @@
 ```swift
 let s = "Radar"
 s.lowercased()           // "radar"
+s.uppercased()           // "RADAR"
 s.count                  // 5
+s.isEmpty                // false
 String(s.reversed())     // "radaR"
 s.contains("da")         // true
 ```
@@ -27,9 +29,17 @@ s.contains("da")         // true
 swift start.swift
 ```
 
+## Повторение
+
+Пригодятся тернарный оператор и интерполяция из [урока 02](../02-constants-and-types).
+
+3. `describeWord(_:)` — верни строку вида `radar: 5 letters, palindrome: yes`: слово в нижнем регистре, число букв и `yes`/`no` для палиндрома.
+
 ## Подсказка
 
 Сравни `lowercased()` с `String(text.lowercased().reversed())`.
+
+В `describeWord` можно вызвать свою же `isPalindrome`: `isPalindrome(word) ? "yes" : "no"`.
 
 ## Дальше по книге
 

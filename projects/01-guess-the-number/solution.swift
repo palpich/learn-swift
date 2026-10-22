@@ -20,14 +20,30 @@ func gameOver(livesLeft: Int, lastHint: String) -> String? {
     return nil
 }
 
-func check(_ name: String, _ actual: Any, _ expected: Any) {
-    let a = "\(actual)"
-    let e = "\(expected)"
-    if a == e {
+// --- checks and game loop: no need to edit below this line ---
+import Foundation
+
+nonisolated(unsafe) var failures = 0
+
+func check(_ name: String, _ ok: Bool, _ detail: String = "") {
+    if ok {
         print("✓ \(name)")
     } else {
-        print("✗ \(name): получили \(a), ждали \(e)")
-        fatalError("проверка не прошла")
+        failures += 1
+        print("✗ \(name)\(detail.isEmpty ? "" : ": \(detail)")")
+    }
+}
+
+func check<T: Equatable>(_ name: String, _ actual: T, _ expected: T) {
+    check(name, actual == expected, "получили \(actual), ждали \(expected)")
+}
+
+func finish(_ title: String) {
+    if failures == 0 {
+        print("\(title) пройден!")
+    } else {
+        print("\(title): не прошло проверок — \(failures). Исправь код и запусти снова.")
+        exit(1)
     }
 }
 
@@ -35,23 +51,10 @@ func runChecks() {
     check("correct", hint(secret: 50, guess: 50), "correct")
     check("lower", hint(secret: 50, guess: 60), "lower")
     check("higher", hint(secret: 50, guess: 40), "higher")
-
-    if gameOver(livesLeft: 3, lastHint: "correct") == "correct" {
-        print("✓ end correct")
-    } else {
-        fatalError("end correct")
-    }
-    if gameOver(livesLeft: 0, lastHint: "higher") == "lose" {
-        print("✓ end lose")
-    } else {
-        fatalError("end lose")
-    }
-    if gameOver(livesLeft: 2, lastHint: "lower") == nil {
-        print("✓ continue")
-    } else {
-        fatalError("continue")
-    }
-    print("Project 01: checks passed!")
+    check("end correct", gameOver(livesLeft: 3, lastHint: "correct"), "correct")
+    check("end lose", gameOver(livesLeft: 0, lastHint: "higher"), "lose")
+    check("continue", gameOver(livesLeft: 2, lastHint: "lower"), nil)
+    finish("Проект 01")
 }
 
 func runGame() {

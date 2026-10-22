@@ -31,6 +31,17 @@ struct Point: Equatable, Hashable, Comparable {
 swift start.swift
 ```
 
+## Повторение
+
+Пригодятся строки из [урока 03](../03-strings) и опционалы с `guard` из [урока 08](../08-optionals).
+
+6. `parseVersion(_:) -> Version?` — разбери строку `"1.10"` в `Version(major: 1, minor: 10)`. Если частей не две или это не числа — верни `nil`.
+7. `latest(_:) -> Version?` — самая новая версия или `nil` для пустого массива.
+
+## Подсказка
+
+`text.split(separator: ".")` даёт массив частей, каждую превращай через `Int(...)`. Раз `Version` — `Comparable`, у массива версий есть `max()`.
+
 ## Дальше по книге
 
 [Equatable](https://developer.apple.com/documentation/swift/equatable) · [Hashable](https://developer.apple.com/documentation/swift/hashable) · [Comparable](https://developer.apple.com/documentation/swift/comparable)

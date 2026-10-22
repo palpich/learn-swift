@@ -35,11 +35,20 @@ struct ContentView: View {
 В `ContentView`:
 
 1. Заголовок `Text("Todo")` крупным шрифтом.  
-2. Поле `@State private var items: [String]` — стартовый список `["Learn Swift", "Build UI"]`.  
-3. `List(items, id: \.self)` — показать элементы.  
+2. Поле `@State private var items: [TodoItem]` — стартовый список из двух дел: «Learn Swift» и «Build UI».  
+3. `List(items) { item in ... }` — показать элементы. Раз `TodoItem` — `Identifiable`, `List` сам различает строки по `id`, даже если названия совпадают.  
 4. `@State private var draft = ""` + `TextField("New item", text: $draft)`.  
-5. Кнопка **Add**: если `draft` не пустой после trim, добавь в `items` и очисти `draft`.  
+5. Кнопка **Add**: если `draft` не пустой после trim, добавь в `items` новый `TodoItem` и очисти `draft`.  
 6. Кнопка **Clear** — очисти весь список.
+
+## Повторение
+
+Пригодятся опционалы из [урока 08](../08-optionals), замыкания из [урока 10](../10-closures), структуры из [урока 12](../12-structures), протоколы из [урока 14](../14-protocols) и extensions из [урока 17](../17-extensions).
+
+7. Допиши в `TodoItem` поле `var isDone = false`.  
+8. В `extension String` добавь `trimmed()` и используй его в кнопке Add.  
+9. Под кнопками покажи `Text("Left: N")`, где N — сколько дел ещё не сделано.  
+10. Нажатие на строку списка переключает `isDone`. Найди индекс дела через `items.firstIndex(where: { $0.id == item.id })` — это опционал, разбери его через `guard let` — и вызови `items[index].isDone.toggle()`.
 
 ## Дальше
 

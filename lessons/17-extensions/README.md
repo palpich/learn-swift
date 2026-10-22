@@ -30,9 +30,17 @@ Extensions используют постоянно: удобные свойст�
 swift start.swift
 ```
 
+## Повторение
+
+Пригодится проверка палиндрома из [урока 03](../03-strings).
+
+4. В том же `extension String` добавь свойство `isPalindrome: Bool`. Теперь можно писать `"Radar".isPalindrome` вместо `isPalindrome("Radar")`.
+
 ## Подсказка
 
-`trimmingCharacters(in: .whitespacesAndNewlines)`. Для суммы: `reduce(0, +)`.
+`trimmingCharacters(in: .whitespacesAndNewlines)`. Для суммы — `reduce(0, +)` из [урока 10](../10-closures).
+
+Внутри extension строка — это `self`, поэтому можно писать просто `lowercased()`.
 
 ## Дальше по книге
 

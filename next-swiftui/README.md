@@ -35,5 +35,6 @@
 - [ ] Сделал todo-лист из урока 26  
 - [ ] Сохранил заметки через SwiftData (урок 27)  
 - [ ] Прошёл `swift test` в уроке 28  
+- [ ] Собрал финальное приложение [`projects/06-final-app`](../projects/06-final-app)  
 
 Дальше — своё приложение и [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/).

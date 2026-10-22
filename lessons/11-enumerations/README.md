@@ -35,9 +35,21 @@ enum Result {
 swift start.swift
 ```
 
+## Повторение
+
+Пригодятся символы строки из [урока 05](../05-loops), опционалы из [урока 08](../08-optionals) и `compactMap` из [урока 10](../10-closures).
+
+5. `parseCommands(_:)` — преврати строку в массив команд, неизвестные буквы пропусти: `"FFLX"` → `[.forward, .forward, .left]`.
+
+### По желанию: вернись к старому проекту
+
+В [`projects/02-hangman`](../../projects/02-hangman) статус хода — строка (`"ok"`, `"win"`, `"lose"`…). Опечатку в такой строке компилятор не заметит. Замени её на `enum GuessStatus { case ok, repeated, miss, win, lose }` и поправь `switch` в `runGame` — теперь компилятор проверит, что ты обработал все варианты.
+
 ## Подсказка
 
 `Command(rawValue: code)` и `switch` по `DownloadResult`.
+
+Цикл по строке отдаёт `Character`, а `rawValue` у `Command` — `String`, поэтому символ придётся обернуть: `String($0)`.
 
 ## Дальше по книге
 

@@ -39,9 +39,21 @@ do {
 swift start.swift
 ```
 
+## Повторение
+
+Пригодятся диапазоны из [урока 04](../04-conditionals), `guard let` из [урока 08](../08-optionals) и связанные значения enum из [урока 11](../11-enumerations).
+
+4. `enum AgeError: Error` с кейсами `notANumber(String)` и `outOfRange(Int)`.
+5. `parseAge(_:) throws -> Int`:
+   - строка не число → брось `notANumber` с исходной строкой;
+   - число вне `0...150` → брось `outOfRange` с этим числом;
+   - иначе верни возраст.
+
 ## Подсказка
 
 Цифру можно искать так: `password.contains { $0.isNumber }`.
+
+В `parseAge` два `guard` подряд: `guard let age = Int(text) else { throw ... }`, затем `guard (0...150).contains(age) else { throw ... }`.
 
 ## Дальше по книге
 

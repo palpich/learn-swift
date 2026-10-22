@@ -17,6 +17,17 @@ hello(name: "Anya", excitedly: false)
 
 Внешняя метка может отличаться от внутренней: `func step(_ value: Int, by stride: Int)`.
 
+Параметры функции — константы. Если функция должна изменить переданную переменную, пометь параметр `inout`, а при вызове поставь `&`:
+
+```swift
+func double(_ value: inout Int) {
+    value *= 2
+}
+
+var n = 5
+double(&n)   // n == 10
+```
+
 ## Задание
 
 1. `rectangleArea(width:height:)` — площадь (`Double`).
@@ -27,9 +38,17 @@ hello(name: "Anya", excitedly: false)
 swift start.swift
 ```
 
+## Повторение
+
+Пригодится `??` из [урока 08](../08-optionals).
+
+3. `greet(_:greeting:)` — имя опционально, приветствие по умолчанию `"Hello"`: `greet("Anya")` → `"Hello, Anya!"`, `greet(nil)` → `"Hello, guest!"`, `greet("Boris", greeting: "Hi")` → `"Hi, Boris!"`.
+
 ## Подсказка
 
 Для повтора удобен массив `Array(repeating:count:).joined(separator:)`.
+
+В `greet` хватит одной строки с интерполяцией: внутри `\( )` можно написать `name ?? "guest"`.
 
 ## Дальше по книге
 

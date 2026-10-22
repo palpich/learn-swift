@@ -11,6 +11,11 @@ extension String {
     func trimmed() -> String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
+
+    var isPalindrome: Bool {
+        let lower = lowercased()
+        return lower == String(lower.reversed())
+    }
 }
 
 extension Array where Element == Int {
@@ -19,14 +24,28 @@ extension Array where Element == Int {
     }
 }
 
-func check(_ name: String, _ actual: Any, _ expected: Any) {
-    let a = "\(actual)"
-    let e = "\(expected)"
-    if a == e {
+// --- checks: no need to edit below this line ---
+nonisolated(unsafe) var failures = 0
+
+func check(_ name: String, _ ok: Bool, _ detail: String = "") {
+    if ok {
         print("✓ \(name)")
     } else {
-        print("✗ \(name): получили \(a), ждали \(e)")
-        fatalError("проверка не прошла")
+        failures += 1
+        print("✗ \(name)\(detail.isEmpty ? "" : ": \(detail)")")
+    }
+}
+
+func check<T: Equatable>(_ name: String, _ actual: T, _ expected: T) {
+    check(name, actual == expected, "получили \(actual), ждали \(expected)")
+}
+
+func finish(_ title: String) {
+    if failures == 0 {
+        print("\(title) пройден!")
+    } else {
+        print("\(title): не прошло проверок — \(failures). Исправь код и запусти снова.")
+        exit(1)
     }
 }
 
@@ -35,4 +54,6 @@ check("odd", 5.isEven, false)
 check("trimmed", "  hi\n".trimmed(), "hi")
 check("sum", [1, 2, 3].sum(), 6)
 check("empty sum", [].sum(), 0)
-print("Урок 17 пройден!")
+check("palindrome Radar", "Radar".isPalindrome, true)
+check("not palindrome", "Swift".isPalindrome, false)
+finish("Урок 17")
